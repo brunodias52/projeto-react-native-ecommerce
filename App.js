@@ -1,0 +1,57 @@
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ProductsList from './screens/ProductsList';
+import ProductDetails from './screens/ProductDetails';
+import Cart from './screens/Cart';
+import {CartIcon} from './components/CartIcon';
+import {CartProvider} from './contexts/CartContext';
+const Stack = createNativeStackNavigator();
+function App() {
+  return (
+    <CartProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* Products list screen Navigation */}
+          <Stack.Screen
+            name="Prodcuts"
+            component={ProductsList}
+            options={({navigation}) => ({
+              title: 'Lista de Produtos',
+              headerTitleStyle: styles.headerTitle,
+              headerRight: () => <CartIcon navigation={navigation} />,
+            })}
+          />
+          {/* Product Detail screen Navigation */}
+          <Stack.Screen
+            name="ProductDetails"
+            component={ProductDetails}
+            options={({navigation}) => ({
+              title: 'Detalhes do Produto',
+              headerTitleStyle: styles.headerTitle,
+              headerRight: () => <CartIcon navigation={navigation} />,
+            })}
+          />
+          {/* Shopping cart screen Navigation */}
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={({navigation}) => ({
+              title: 'Carrinho',
+              headerTitleStyle: styles.headerTitle,
+              headerRight: () => <CartIcon navigation={navigation} />,
+            })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CartProvider>
+  );
+}
+const styles = StyleSheet.create({
+  headerTitle: {
+    fontSize: 20,
+  },
+});
+
+export default App;
