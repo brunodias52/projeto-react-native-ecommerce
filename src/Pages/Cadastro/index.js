@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
-import api from '../../../services/api';
+import api from '../../services/api';
 
 export default function Cadastro() {
     //Implementação dos atributos

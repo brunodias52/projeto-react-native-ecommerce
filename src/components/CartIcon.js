@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {CartContext} from '../contexts/CartContext';
+
 export function CartIcon({navigation}) {
   const {getItemsCount} = useContext(CartContext);
   return (

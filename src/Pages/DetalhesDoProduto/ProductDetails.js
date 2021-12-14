@@ -8,8 +8,8 @@ import {
   Button,
   StyleSheet,
 } from 'react-native';
-import {CartContext} from '../contexts/CartContext';
-import {getProduct} from '../services/ProductsService';
+import {CartContext} from '../../contexts/CartContext';
+import {getProduct} from '../../services/ProductsService';
 
 function ProductDetails({route}) {
   const {productId} = route.params;

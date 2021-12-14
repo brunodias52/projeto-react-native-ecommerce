@@ -10,7 +10,8 @@ import {
   ScrollView
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import {CartContext} from '../contexts/CartContext';
+import {CartContext} from '../../contexts/CartContext';
+
 function Cart({navigation}) {
   const {items, getTotalPrice, deleteItemFromCart, updateItemFromCart} =
     useContext(CartContext);

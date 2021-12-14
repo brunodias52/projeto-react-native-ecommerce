@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {Container, LoadIcon} from "./style";
 /* import AsyncStorage from "@react-native-async-storage/async-storage"; */
 import { useNavigation } from "@react-navigation/native";
-import api from "../../../services/ProductsService";
+import api from "../../services/ProductsService";
 
 
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-import {ProductCard} from '../components/ProductCard';
-import {getProducts} from '../services/ProductsService';
+import {ProductCard} from '../../components/ProductCard';
+import {getProducts} from '../../services/ProductsService';
 
 function ProductsList({navigation}) {
   const [products, setProducts] = useState([]);

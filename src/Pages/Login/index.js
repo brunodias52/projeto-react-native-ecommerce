@@ -2,8 +2,8 @@ import React , { useState, useEffect, useContext }from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import api from "../../../services/api";
-import {UserContext} from '../../../contexts/UserContext'
+import api from "../../services/api";
+import {UserContext} from '../../contexts/UserContext'
 
 
 

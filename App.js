@@ -2,15 +2,16 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ProductsList from './screens/ProductsList';
-import ProductDetails from './screens/ProductDetails';
-import Cart from './screens/Cart';
-import {CartIcon} from './components/CartIcon';
-import {CartProvider} from './contexts/CartContext';
+
+import ProductsList from './src/Pages/ListaDeProdutos/ProductsList';
+import ProductDetails from './src/Pages/DetalhesDoProduto/ProductDetails';
+import Cart from './src/Pages/Carrinho/Cart';
+import {CartIcon} from './src/components/CartIcon';
+import {CartProvider} from './src/contexts/CartContext';
 import Preload from './src/Pages/Preload';
 import Login from './src/Pages/Login';
 import Cadastro from './src/Pages/Cadastro';
-import UserContextProvider from "./contexts/UserContext";
+import UserContextProvider from "./src/contexts/UserContext";
 
 
 const Stack = createNativeStackNavigator();
