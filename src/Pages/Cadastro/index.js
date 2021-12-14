@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
-import { 
-    KeyboardAvoidingView, 
-    StyleSheet, 
-    Text, 
-    TextInput, 
-    TouchableOpacity, 
-    View 
+import {
+    KeyboardAvoidingView,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 import api from '../../services/api';
+import styles from './style';
 
 export default function Cadastro() {
     //Implementação dos atributos
@@ -17,21 +18,29 @@ export default function Cadastro() {
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [cpf, setCpf] = useState('');
+    const [dataNasc, setDataNasc] = useState('');
+    const [cep, setCEP] = useState('');
+    const [estado, setEstado] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [rua, setRua] = useState('');
+    const [numero, setNumero] = useState('');
+    const [complemento, setComplemento] = useState('');
 
     const navigation = useNavigation();
 
     const handleRegisterClick =async() => {
-    if(nome != '' && usuario != '' && email != '' && cpf != '') {
-        let res = await api.setCliente(nome, usuario, email, cpf)
+    if(nome != '' && usuario != '' && email != '' && cpf != '' && dataNasc != '' && cep != '' && estado != '' && cidade != '' && bairro != '' && rua != '' && numero != '' && complemento != '') {
+        let res = await api.setCliente(nome, usuario, email, cpf, dataNasc, cep, estado, cidade, bairro, rua, numero, complemento)
         alert("enviado")
-       
     }else{
         alert("Não enviado")
     }}
     
     return(
+        <ScrollView>
         <KeyboardAvoidingView style={styles.background}>
-            <Text style={styles.textTitle}>Cadastro</Text>
+            <Text style={styles.text}>Cadastro</Text>
             <View style={styles.container}>
                 <TextInput
                 style={styles.input}
@@ -58,72 +67,81 @@ export default function Cadastro() {
                 style={styles.input}
                 value={cpf}
                 secureTextEntry={true}
-                placeholder="Senha"
+                placeholder="CPF"
                 autoCorrect={false}
                 onChangeText={t=>setCpf(t)}
                 />
-            </View>
+                <TextInput
+                style={styles.input}
+                value={dataNasc}
+                placeholder="Data de Nascimento"
+                autoCorrect={false}
+                onChangeText={t=>setDataNasc(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={cep}
+                placeholder="CEP"
+                autoCorrect={false}
+                onChangeText={t=>setCEP(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={estado}
+                placeholder="Estado"
+                autoCorrect={false}
+                onChangeText={t=>setEstado(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={cidade}
+                placeholder="Cidade"
+                autoCorrect={false}
+                onChangeText={t=>setCidade(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={bairro}
+                placeholder="Bairro"
+                autoCorrect={false}
+                onChangeText={t=>setBairro(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={rua}
+                placeholder="Rua"
+                autoCorrect={false}
+                onChangeText={t=>setRua(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={numero}
+                placeholder="Número"
+                autoCorrect={false}
+                onChangeText={t=>setNumero(t)}
+                />
+                <TextInput
+                style={styles.input}
+                value={complemento}
+                placeholder="Complemento"
+                autoCorrect={false}
+                onChangeText={t=>setComplemento(t)}
+                />
 
+            </View>
             <TouchableOpacity
-            style={styles.buttonSubmit}
+            style={styles.buttonSubmitCad}
             onPress={handleRegisterClick}
             >
                 <Text style={styles.textColor}>Cadastre-se</Text>
             </TouchableOpacity>
-
             <TouchableOpacity
-            style={styles.buttonSubmit}
+            style={styles.buttonSubmitHome}
             onPress={() => navigation.navigate('Login')}
             >
                 <Text style={styles.textColor}>Voltar para Home</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'black',
-        justifyContent: 'center'
-    },
-    container: {
-        flex: 1,
-        width: '90%',
-        paddingBottom: 50,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    input: {
-        backgroundColor: "#fff",
-        width: "70%",
-        marginBottom: 15,
-        color: '#222',
-        padding: 10,
-        borderRadius: 15
-    },
-    textColor: {
-        fontWeight: 'bold',
-        color: 'yellow'
-    },
-    textTitle: {
-        marginTop: 50,
-        color: 'yellow',
-        fontWeight: 'bold',
-        fontSize: 30,
-        lineHeight: 34
-    },
-    buttonSubmit: {
-        backgroundColor: '#33BB',
-        width: '50%',
-        height: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 15,
-        marginBottom: 20
-    },
-    registerText: {
-        color: '#fff'
-    }
-})
