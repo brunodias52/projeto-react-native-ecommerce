@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  ScrollView
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {CartContext} from '../contexts/CartContext';
@@ -58,6 +59,7 @@ function Cart({navigation}) {
 
   function renderItem({item}) {
     return (
+     
       <View>
         <View style={styles.cartLine}>
           <TouchableOpacity
@@ -90,6 +92,7 @@ function Cart({navigation}) {
           style={{}}
         />
       </View>
+      
     );
   }
   function Totals() {

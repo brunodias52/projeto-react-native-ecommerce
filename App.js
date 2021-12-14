@@ -7,22 +7,51 @@ import ProductDetails from './screens/ProductDetails';
 import Cart from './screens/Cart';
 import {CartIcon} from './components/CartIcon';
 import {CartProvider} from './contexts/CartContext';
+import Preload from './src/Pages/Preload';
+import Login from './src/Pages/Login';
+import Cadastro from './src/Pages/Cadastro';
+import UserContextProvider from "./contexts/UserContext";
+
+
 const Stack = createNativeStackNavigator();
+
 function App() {
   return (
+    <UserContextProvider>
     <CartProvider>
       <NavigationContainer>
         <Stack.Navigator>
           {/* Products list screen Navigation */}
-          <Stack.Screen
-            name="Prodcuts"
+          
+
+          <Stack.Screen 
+          name="Login" 
+          component={Login}
+          />
+          <Stack.Screen 
+          name="Preload" 
+          component={Preload}
+          />
+          
+
+          <Stack.Screen 
+          name="Cadastro" 
+          component={Cadastro}
+          />
+
+          
+            <Stack.Screen
+            name="Home"
             component={ProductsList}
             options={({navigation}) => ({
               title: 'Lista de Produtos',
               headerTitleStyle: styles.headerTitle,
               headerRight: () => <CartIcon navigation={navigation} />,
             })}
-          />
+          />  
+
+          
+
           {/* Product Detail screen Navigation */}
           <Stack.Screen
             name="ProductDetails"
@@ -33,6 +62,7 @@ function App() {
               headerRight: () => <CartIcon navigation={navigation} />,
             })}
           />
+          
           {/* Shopping cart screen Navigation */}
           <Stack.Screen
             name="Cart"
@@ -46,6 +76,7 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </CartProvider>
+    </UserContextProvider>
   );
 }
 const styles = StyleSheet.create({

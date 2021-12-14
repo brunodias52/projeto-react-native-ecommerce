@@ -20,3 +20,16 @@ export async function getProduct(id) {
   console.log(response.data);
   return response.data;
 }
+export async function setCliente (nome, usuario, email, cpf){
+  const req = await fetch(`${BASE_API}/cliente`, {
+      method: 'POST',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({nome, usuario, email, cpf})
+  });
+  const json = await req.json();
+  return json;
+}
+
